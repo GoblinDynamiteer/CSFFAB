@@ -18,49 +18,65 @@ namespace HelperMethods
 
             Console.Write("What's your first name? ");
             string firstName = Console.ReadLine();
-
+            
             Console.Write("What's your last name? ");
             string lastName = Console.ReadLine();
 
-            Console.Write("In what city were you born?");
+            Console.Write("In what city were you born? ");
             string city = Console.ReadLine();
 
-            char[] firstNameArray = firstName.ToCharArray();
-            Array.Reverse(firstNameArray);
+            /* Call DisplayResult with three parameters */
+            DisplayResult(
+                ReverseString(firstName),
+                ReverseString(lastName),
+                ReverseString(city)
+            );
 
-            char[] lastNameArray = lastName.ToCharArray();
-            Array.Reverse(lastNameArray);
+            Console.WriteLine();
 
-            char[] cityArray = city.ToCharArray();
-            Array.Reverse(cityArray);
-
-            string result = "";
-
-            foreach (char item in firstNameArray)
-            {
-                result += item;
-            }
-
-            result += " ";
-
-            foreach (char item in lastNameArray)
-            {
-                result += item;
-            }
-
-            result += " ";
-
-            foreach (char item in cityArray)
-            {
-                result += item;
-            }
-
-            Console.WriteLine("Results: " + result);
+            /* Call DisplayResult with one parameter */
+            DisplayResult(
+                ReverseString(firstName) + " " +
+                ReverseString(lastName) + " " +
+                ReverseString(city) 
+            );
 
             Console.ReadLine();
 
         }
 
+        private static string ReverseString(string message)
+        {
+            char[] messageArray = message.ToCharArray();
+            Array.Reverse(messageArray);
+            /* Concatenate char array to string, and return string */
+            return String.Concat(messageArray);
+        }
+
+        /* Method with three parameters */
+        private static void DisplayResult(string reversedFirstName, 
+                                          string reversedLastName, 
+                                          string reversedCity)
+        {
+            /* String.Format is like sprintf, but returns string. 
+            Uses {0}, {1} instead of %s %i etc. */
+            Console.WriteLine("Results: ");
+            Console.Write(String.Format("{0} {1} {2}",
+                    reversedFirstName,
+                    reversedLastName,
+                    reversedCity));
+        }
+
+        /* Method DisplayResult (same name as above, different version) 
+         * with one parameters. C# handles these as seperate methods. 
+         
+           This is called overloaded methods
+        */
+        private static void DisplayResult(string message)
+        {
+            Console.WriteLine("Results: ");
+            Console.Write(message);
+        }
 
     }
 }
