@@ -1,10 +1,13 @@
-﻿using System;
+﻿/*   C# Fundamentals for Absolute Beginners
+ *   7 | Operators, Expressions, and Statements
+ */
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-/* Operators, expressions, statements */
 namespace OpExSt
 {
     class Program
